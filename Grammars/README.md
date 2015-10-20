@@ -1,11 +1,9 @@
-#Grammars
+# Grammars
 
-This folder holds language-agnostic grammars for reading various model source languages:
+This folder holds language-agnostic grammars for reading various model source languages.
 
+## To add
 
-###To add:
-
-- Vensim
 - Dynamo
 - Jitia
-- etc
+- etc.
