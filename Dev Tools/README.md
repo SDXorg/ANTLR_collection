@@ -45,12 +45,13 @@ The preprocessor may become unnecessary if someone extends the Vensim grammar. V
 
 To install on a Unix-like system such as Mac OS X:
 
-1. Install [node.js](https://nodejs.org/en/) to get the Google V8 JavaScript engine on your development machine.
-2. Install [Babel](https://babeljs.io/) and other dependencies with the Node Package Manager.
+1. Copy the sdepp.js file to your project directory.
+2. Install [node.js](https://nodejs.org/en/) to get the Google V8 JavaScript engine on your development machine.
+3. Install [Babel](https://babeljs.io/) and other dependencies with the Node Package Manager. We are using Babel 5 until the big changes in Babel 6 shake out.
 ~~~
-sudo npm install -g babel ramda commander
+sudo npm install -g babel@5.8.29
+sudo npm install -g ramda commander
 ~~~
-3. Copy the sdepp.js file to your project directory.
 
 ### Running
 
