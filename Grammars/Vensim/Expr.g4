@@ -1,8 +1,7 @@
 grammar Expr;
 
-root: expr ;
-
 expr:   Id '(' exprList? ')'              # Call
+    |   Id subscriptList? '(' expr ')'    # LookupCall
     |   ':NOT:' expr                      # Not
     |   '-' expr                          # Negative
     |   '+' expr                          # Positive
@@ -16,23 +15,29 @@ expr:   Id '(' exprList? ')'              # Call
     |   Id subscriptList?                 # Var
     |   Const                             # Const
     |   Keyword                           # Keyword
+    |   lookup                            # LookupArg
     |   '(' expr ')'                      # Parens
     ;
 
 exprList : expr (',' expr)* ;
 subscriptList : '[' Id (',' Id)* ']' ;
+lookup : '(' lookupRange? lookupPointList ')' ;
+lookupRange : '[' lookupPoint '-' lookupPoint ']' ',' ;
+lookupPointList : lookupPoint (',' lookupPoint)* ;
+lookupPoint : '(' expr ',' expr ')' ;
 
 Star : '*' ;
 Div : '/' ;
 Plus : '+' ;
 Minus : '-' ;
-Less : '<';
-LessEqual : '<=';
-Greater : '>';
-GreaterEqual : '>=';
+Less : '<' ;
+LessEqual : '<=' ;
+Greater : '>' ;
+GreaterEqual : '>=' ;
 Equal : '=' ;
+TwoEqual : '==' ;
 NotEqual : '<>' ;
-Exclamation : '!';
+Exclamation : '!' ;
 
 Id : ((Nondigit IdChar*) | (Nondigit (IdChar | ' ')* IdChar) | StringLiteral) Exclamation? ;
 
