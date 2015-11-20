@@ -21,7 +21,7 @@ const sdepp = (function() {
       }
     }, lines);
     // Join lines continued with trailing backslash characters.
-    const backslash = /\\/;
+    const backslash = /\\\s*$/;
     let prevLine = '';
     R.forEach(line => {
       if (!R.isEmpty(prevLine)) {
@@ -32,12 +32,7 @@ const sdepp = (function() {
       }
       const m = line.match(backslash);
       if (m) {
-        if (m.index == line.length-1) {
-          prevLine = line.substr(0, line.length-1);
-        }
-        else {
-          console.error(`ERROR: backslash before end of line at position ${m.index} in ${line}`);
-        }
+        prevLine = line.substr(0, m.index);
       }
       if (R.isEmpty(prevLine)) {
         console.log(line);
