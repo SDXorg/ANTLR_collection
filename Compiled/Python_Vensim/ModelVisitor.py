@@ -15,23 +15,8 @@ class ModelVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by ModelParser#varname.
-    def visitVarname(self, ctx):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by ModelParser#formula.
-    def visitFormula(self, ctx):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by ModelParser#lookup.
-    def visitLookup(self, ctx):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by ModelParser#lookupList.
-    def visitLookupList(self, ctx):
+    # Visit a parse tree produced by ModelParser#lhs.
+    def visitLhs(self, ctx):
         return self.visitChildren(ctx)
 
 
@@ -42,16 +27,6 @@ class ModelVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by ModelParser#constList.
     def visitConstList(self, ctx):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by ModelParser#lookupPoint.
-    def visitLookupPoint(self, ctx):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by ModelParser#root.
-    def visitRoot(self, ctx):
         return self.visitChildren(ctx)
 
 
@@ -100,6 +75,11 @@ class ModelVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by ModelParser#LookupCall.
+    def visitLookupCall(self, ctx):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by ModelParser#Not.
     def visitNot(self, ctx):
         return self.visitChildren(ctx)
@@ -125,6 +105,11 @@ class ModelVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by ModelParser#LookupArg.
+    def visitLookupArg(self, ctx):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by ModelParser#Power.
     def visitPower(self, ctx):
         return self.visitChildren(ctx)
@@ -132,6 +117,26 @@ class ModelVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by ModelParser#exprList.
     def visitExprList(self, ctx):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by ModelParser#lookup.
+    def visitLookup(self, ctx):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by ModelParser#lookupRange.
+    def visitLookupRange(self, ctx):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by ModelParser#lookupPointList.
+    def visitLookupPointList(self, ctx):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by ModelParser#lookupPoint.
+    def visitLookupPoint(self, ctx):
         return self.visitChildren(ctx)
 
 

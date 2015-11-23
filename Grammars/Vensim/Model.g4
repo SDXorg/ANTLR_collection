@@ -10,3 +10,4 @@ constList : Const (',' Const)* ;
 Encoding: '{' [A-Za-z0-9-]+ '}' -> skip ;
 UnitsDoc: '~' .*? '|' -> skip ;
 Group: '****' .*? '|' -> skip ;
+Sketch: '\\\\\\' .* -> skip ;
