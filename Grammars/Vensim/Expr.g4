@@ -1,7 +1,7 @@
 grammar Expr;
 
 expr:   Id '(' exprList? ')'              # Call
-    |   Id subscriptList? '(' expr ')'    # LookupCall
+    |   Id ('[' subscriptList ']')? '(' expr ')' # LookupCall
     |   ':NOT:' expr                      # Not
     |   '-' expr                          # Negative
     |   '+' expr                          # Positive
@@ -12,7 +12,7 @@ expr:   Id '(' exprList? ')'              # Call
     |   expr op=('='|'<>') expr           # Equality
     |   expr ':AND:' expr                 # And
     |   expr ':OR:' expr                  # Or
-    |   Id subscriptList?                 # Var
+    |   Id ('[' subscriptList ']')?       # Var
     |   Const                             # Const
     |   Keyword                           # Keyword
     |   lookup                            # LookupArg
@@ -20,7 +20,7 @@ expr:   Id '(' exprList? ')'              # Call
     ;
 
 exprList : expr (',' expr)* ;
-subscriptList : '[' Id (',' Id)* ']' ;
+subscriptList : Id (',' Id)* ;
 lookup : '(' lookupRange? lookupPointList ')' ;
 lookupRange : '[' lookupPoint '-' lookupPoint ']' ',' ;
 lookupPointList : lookupPoint (',' lookupPoint)* ;
@@ -39,7 +39,7 @@ TwoEqual : '==' ;
 NotEqual : '<>' ;
 Exclamation : '!' ;
 
-Id : ((Nondigit IdChar*) | (Nondigit (IdChar | ' ')* IdChar) | StringLiteral) Exclamation? ;
+Id : ((Nondigit IdChar*) | (Nondigit (IdChar | ' ')* IdChar) | StringLiteral) (' '* Exclamation)? ;
 
 fragment
 IdChar : [a-zA-Z0-9_] ;

@@ -9,17 +9,16 @@ The Model grammar matches the "outer" part of a Vensim .mdl file, including equa
 
 To build the lexer and parser in Java, give the command:
 ~~~
-java -jar antlr-4.5-complete.jar -visitor -no-listener Model.g4
+java -jar antlr-4.7-complete.jar -visitor -no-listener Model.g4
 ~~~
 
 To build in JavaScript, give the command:
 ~~~
-java -jar antlr-4.5-complete.jar -Dlanguage=JavaScript -visitor -no-listener Model.g4
+java -jar antlr-4.7-complete.jar -Dlanguage=JavaScript -visitor -no-listener Model.g4
 ~~~
 
-The Vensim grammar is stil incomplete.
+The Vensim grammar has the following limitations.
 
-- It relies on a preprocessor to strip the sketch section from the model and to join lines continued with the backslash character.
+- It relies on a preprocessor to join lines continued with the backslash character.
 - Units and groups are stripped from the model. The grammar is not yet suitable for generating model documentation.
-- Subscripts are matched in equations, but subscript range definitions are not matched.
-- Macros are unsupported. Model implementations should code macros by hand.
+- Macros and tabbed arrays are unsupported. You can either rewrite the model or translate them manually.
